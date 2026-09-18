@@ -1,0 +1,72 @@
+# Generalized Property Pattern – Broader Application Plan
+
+## Overview
+
+The core design pattern established for Fire can be extended to other domains using a consistent structure:
+
+- **Producer** (`-genic`): Generates / produces the effect
+- **Destroyer** (`-lytic`): Suppresses / destroys / counters the effect
+- **Triggerability** (domain-specific or general): How easily the object enters the active state
+- **Active State**: Boolean + Intensity (the effect is only fully active while in this state)
+- **Resource / Fuel equivalent** (optional): Finite resource that is consumed while active
+
+This creates clean opposing pairs and intuitive gameplay interactions across systems.
+
+---
+
+## Core Pattern Template
+
+| Role                  | Naming Convention          | Description |
+|-----------------------|----------------------------|-----------|
+| Producer              | `[Root]-genic`             | Generates the force/effect |
+| Destroyer             | `[Root]-lytic`             | Suppresses or destroys the force/effect |
+| Trigger / Susceptibility | Domain-specific name    | How easily it activates |
+| Active State          | Boolean + Intensity        | On/off + strength multiplier |
+| Resource (optional)   | Fuel / Charge / etc.       | Consumed while active |
+
+---
+
+## Suggested Domain Applications
+
+| Domain              | Producer          | Destroyer         | Trigger / Susceptibility     | Suggested Active State     | Notes |
+|---------------------|-------------------|-------------------|------------------------------|----------------------------|-------|
+| **Fire / Heat**     | Pyrogenic         | Pyrolytic         | Combustibility               | Burning + Intensity        | Original system |
+| **Cold**            | Cryogenic         | Cryolytic         | Freezability                 | Freezing / Frozen          | Natural opposite of heat |
+| **Water / Moisture**| Hydrogenic        | Hydrolytic        | Hydratability                | Wet / Saturated            | Hydrolytic already used in chemistry |
+| **Electricity**     | Electrogenic      | Electrolytic      | Conductivity                 | Charged / Electrified      | Both terms are real scientific terms |
+| **Light / Radiation**| Photogenic       | Photolytic        | Photosensitivity             | Illuminated / Radiating    | Photolytic is common in chemistry |
+| **Acid / Corrosion**| Acidogenic        | Acidolytic        | Corrodibility                | Corroding                  | Useful for environmental effects |
+| **Pressure / Force**| Barogenic         | Barolytic         | Compressibility              | Pressurized                | From "baro-" (pressure) |
+| **Toxicity**        | Toxigenic         | Toxilytic         | Toxicity Uptake / Susceptibility | Poisoned / Contaminated | Toxigenic is already widely used |
+
+---
+
+## Additional Notes on Cross-Cutting Properties
+
+- **Triggerability / Reactivity** (0–100) can serve as a general property when domain-specific names feel unnecessary.
+- Domain-specific trigger names (Combustibility, Freezability, Conductivity, etc.) feel more natural and readable in most cases.
+- The same object can have multiple pairs active at once (e.g., high Pyrolytic + high Hydrogenic = good fire extinguisher).
+
+---
+
+## Design Benefits of This Pattern
+
+- Instantly readable opposition (`-genic` vs `-lytic`)
+- Consistent mental model across systems
+- Easy to expand with new domains
+- Supports both simple gameplay and deeper simulation
+- Works well for elemental, environmental, chemical, or magical systems
+
+---
+
+## Recommended Next Steps
+
+1. Lock the Fire system first (already well-defined).
+2. Prototype 1–2 additional domains (Cold and Electricity are strong candidates).
+3. Decide which domains need a full Resource/Fuel equivalent.
+4. Define interaction rules between domains (e.g., high Pyrolytic + high Cryogenic, or Hydrogenic vs Pyrogenic).
+
+---
+
+**Status**: Brainstorm / Reference document  
+This is intended as a companion to the detailed Fire Property System plan.

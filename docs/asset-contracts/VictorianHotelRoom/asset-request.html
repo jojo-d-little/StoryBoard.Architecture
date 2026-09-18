@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Asset Request - Victorian Hotel Room</title>
+  <style>
+    :root {
+      --bg: #f3efe8;
+      --panel: #fffdf9;
+      --ink: #252525;
+      --muted: #5f5a50;
+      --line: #d6cec1;
+      --accent: #7c4a1f;
+      --accent-soft: #f6eadf;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--ink);
+      line-height: 1.45;
+      background:
+        radial-gradient(circle at 0% 0%, #e8ddcc 0, transparent 35%),
+        radial-gradient(circle at 100% 0%, #f0e6d6 0, transparent 40%),
+        var(--bg);
+    }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero,
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 10px;
+      line-height: 1.2;
+    }
+
+    h1 { font-size: 32px; }
+
+    h2 {
+      margin-top: 24px;
+      font-size: 24px;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 6px;
+    }
+
+    p, li, td, th { font-size: 16px; }
+
+    .muted { color: var(--muted); }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #f7f1e7;
+      padding: 4px 10px;
+      font-size: 13px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .todo {
+      border-left: 5px solid var(--accent);
+      background: var(--accent-soft);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-top: 8px;
+    }
+
+    .ref-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .ref-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px;
+    }
+
+    .ref-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border: 1px solid #e4dacb;
+      background: #f4eee3;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border: 1px solid var(--line);
+      margin-top: 8px;
+    }
+
+    th, td {
+      text-align: left;
+      border: 1px solid var(--line);
+      padding: 8px;
+      vertical-align: top;
+    }
+
+    th { background: #f5efe5; }
+
+    @media (max-width: 960px) {
+      .two-col,
+      .three-col {
+        grid-template-columns: 1fr;
+      }
+
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Asset Request: Victorian Hotel Room Package</h1>
+      <div class="chips">
+        <span class="chip">Status: Open</span>
+        <span class="chip">Theme: Victorian Hotel Room</span>
+      </div>
+    </section>
+
+    <h2>1) Purpose and Scope</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Goal</h3>
+        <p>
+          Request is for a complete room-image asset package for a Victorian Hotel room that can be assembled by runtime layering.
+          <br/>
+          <br/>
+          Assets should be designed to support a variety of room layouts and door placements, while maintaining a consistent visual theme.
+          <br/>
+          <ul>
+            <li>Room image size: 800x600</li>
+            <li>Long wall span: 800 px</li>
+            <li>Short wall span: 600 px</li>
+            <li>Assets should allow for both open and closed door states</li>
+            <li>Two door styles are requested: a larger ornate door for room entry/exit and a smaller door for use as an interior closet or bathroom door.</li>
+          </ul>
+          <br/>
+          Victorian style leaves a lot of room for interpretation, so the artist is encouraged to explore elements such as:
+          <ul>
+            <li>Ornate woodwork</li>
+            <li>Patterned wallpaper</li>
+            <li>Rugs over wooden floors</li>
+            <li>Bay windows</li>
+            <li>Decorative trim</li>
+          </ul>
+          <br/>
+          Any rugs or floor coverings should be designed to be removable, so that the base floor can be seen in some room layouts....i.e. a separate image.
+          <br/>
+          <br/>
+          One wall design needs to include a window.  A bay window would be ideal and a good opportunity to show using a "thicker" wall to provide additional detail.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Out of Scope (for now)</h3>
+        <p>
+            This request does not include any furniture, lighting, or other room objects.  Those will be requested in a future asset package.
+        </p>
+      </div>
+    </div>
+
+    <h2>2) Reference Material - How To Document</h2>
+    <div class="card">
+      <p>
+        General room image layout and baseline expectations are documented in the <a href="../../graphic-artist-how-tos/RoomImages/index.html">Room Images how-to.</a>  
+        Understanding this document and the sample assets provided with it is important for understanding the expectations of this asset request.
+      </p>
+
+    </div>
+
+    <h2>3) Reference Material - Inspiration Set</h2>
+    <div class="card">
+
+      <div class="ref-grid">
+        <div class="ref-card">
+          <img src="inspiration/exterior.png" alt="Victorian inspiration exterior" />
+          <div><b>exterior.png</b></div>
+        </div>
+        <div class="ref-card">
+          <img src="inspiration/Victorian-Room.png" alt="Victorian room inspiration 0" />
+          <div><b>Victorian-Room.png</b></div>
+        </div>
+        <div class="ref-card">
+          <img src="inspiration/Victorian-Room_1.png" alt="Victorian room inspiration 1" />
+          <div><b>Victorian-Room_1.png</b></div>
+        </div>
+        <div class="ref-card">
+          <img src="inspiration/Victorian-Room_2.png" alt="Victorian room inspiration 2" />
+          <div><b>Victorian-Room_2.png</b></div>
+        </div>
+        <div class="ref-card">
+          <img src="inspiration/Victorian-Room_3.png" alt="Victorian room inspiration 3" />
+          <div><b>Victorian-Room_3.png</b></div>
+        </div>
+        <div class="ref-card">
+          <img src="inspiration/Victorian-Room_4.png" alt="Victorian room inspiration 4" />
+          <div><b>Victorian-Room_4.png</b></div>
+        </div>
+      </div>
+    </div>
+
+    <h2>4) Requested Asset Set</h2>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Asset Group</th>
+            <th>Requested Variants</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Floor</td>
+            <td>1 to 2 style variants</td>
+            <td>Main 800x600 base composition layer.</td>
+          </tr>
+          <tr>
+            <td>Long Wall (N/S)</td>
+            <td>1 to 2 style variants</td>
+            <td>include with and without door openings</td>
+          </tr>
+          <tr>
+            <td>Short Wall (E/W)</td>
+            <td>1 to 2 style variants</td>
+            <td>include with and without door openings</td>
+          </tr>
+          <tr>
+            <td>Short Wall w/ Window</td>
+            <td>1 style</td>
+            <td>exterior window</td>
+          </tr>
+          <tr>
+            <td>Corner Decor</td>
+            <td>Optional corner cap image set</td>
+            <td>Used as-needed: seam cover or decorative flourish.</td>
+          </tr>
+          <tr>
+            <td>Large/Regular Door</td>
+            <td>Closed + Open</td>
+            <td>Door frame/jamb should mask wall cutout edges cleanly.</td>
+          </tr>
+          <tr>
+            <td>Small Door</td>
+            <td>Closed</td>
+            <td>Closet/Bath door</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>5) Technical Baseline </h2>
+    <div class="three-col">
+      <div class="card">
+        <h3>File Format</h3>
+        <ul>
+          <li>Primary export format: PNG</li>
+          <li>Optional source format: layered PSD/XCF</li>
+          <li>Folder structure and naming conventions: <i>VicHotel_X</i> where X is descriptive of what it is (e.g., Floor, LongWall, ShortWall, Door_Open, Door_Closed, Door_Small).</li>
+        </ul>
+        <h3>Fixed Dimensions</h3>
+        <ul>
+          <li>Room canvas: 800x600 (floor image is exactly 800px-600px)</li>
+          <li>Long wall span target: 800 px</li>
+          <li>Short wall span target: 600 px</li>
+          <li>Open/closed door variants must share exact outer dimensions</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Transparency Rules</h3>
+        <ul>
+          <li>Door-opening walls include intentional transparent cutout.</li>
+          <li>Door art should visually hide cutout seams.</li>
+          <li>Decorative items such as rugs, corner details, etc. use transparency to overlay the base floor or walls.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Flexible Areas</h3>
+        <ul>
+          <li>Wall thickness/detail depth may vary.</li>
+          <li>Corner decorators are optional.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>6) Packaging and Delivery (Placeholder)</h2>
+    <div class="card">
+      <p>
+        Simple zip file delivery is expected, with a clear directory/file naming  convention for each asset.  
+      </p>
+      <ul>
+        <li>Primary export format: PNG</li>
+        <li>Optional source format: layered XCF</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

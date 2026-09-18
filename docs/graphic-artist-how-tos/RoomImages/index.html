@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Room Image Art Brief - WorkshopTutorial Atrium</title>
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --panel: #fffdf8;
+      --ink: #222222;
+      --muted: #5f5a50;
+      --line: #d8d2c5;
+      --accent: #9b6b2f;
+      --ok: #295f2d;
+      --warn: #7a4e18;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 0% 0%, #e8dfcd 0, transparent 35%),
+        radial-gradient(circle at 100% 0%, #efe5d5 0, transparent 40%),
+        var(--bg);
+      line-height: 1.45;
+    }
+
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 26px;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 10px;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: 34px;
+      letter-spacing: 0.2px;
+    }
+
+    h2 {
+      margin-top: 26px;
+      font-size: 24px;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 8px;
+    }
+
+    p, li { font-size: 17px; }
+    .muted { color: var(--muted); }
+
+    .hero {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 8px 22px rgba(48, 35, 18, 0.09);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 10px;
+      background: #f8f3e8;
+      font-size: 13px;
+    }
+
+    .composite-stage {
+      position: relative;
+      width: 800px;
+      height: 600px;
+      max-width: 100%;
+      border: 1px solid #8f8a7f;
+      background: #111;
+      margin: 14px auto 0;
+      overflow: hidden;
+    }
+
+    .part {
+      position: absolute;
+      image-rendering: auto;
+    }
+
+    .label-overlay {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(17, 17, 17, 0.78);
+      color: #fff;
+      font-size: 12px;
+      padding: 5px 8px;
+      border-radius: 6px;
+    }
+
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .legend-item {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      padding: 10px;
+    }
+
+    .legend-item b { color: #3a2b16; }
+
+    .parts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .part-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+      background: #fff;
+    }
+
+    .part-card img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #e8e0d2;
+      background: #f7f2e8;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .checklist li {
+      margin-bottom: 6px;
+    }
+
+    .ok { color: var(--ok); }
+    .warn { color: var(--warn); }
+
+    .note {
+      border-left: 5px solid var(--accent);
+      background: #fff8ed;
+      padding: 10px 12px;
+      border-radius: 6px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 950px) {
+      .two-col { grid-template-columns: 1fr; }
+      .legend { grid-template-columns: 1fr; }
+      h1 { font-size: 28px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Graphic Artist How-To: Room Images</h1>
+      <p class="muted">Example room: <b>WorkshopTutorial - Atrium</b></p>
+      <p>
+        This guide explains how room art pieces/images are used to create the final room image, 
+        which sizes are fixed, where flexibility is allowed, and how the runtime assembles 
+        final room visuals.
+        <br/>
+        The goal is to provide a clear understanding of how room images are used in the game engine and 
+        what is expected from the artist when creating room image assets.
+      </p>
+      <div class="chips">
+        <span class="chip">Audience: Artists</span>
+        <span class="chip">Rendering Mode: Overlay</span>
+        <span class="chip">Base Canvas: 800 x 600</span>
+        <span class="chip">Reference Room: Atrium</span>
+      </div>
+    </section>
+
+    <h2>1) Final Room Look</h2>
+    <p>
+      The game engine combines separate art pieces into one finished room image. 
+      Images are provided as parts and the game engine places and layers them into a final room image.
+     <br/>
+     <br/>
+      The following final room image shows the room itself as well as 3 colored crates in the room.
+      The crates are not part of the room art; they are just for visual reference.
+     <br/>
+    </p>
+
+
+    <div class="card">
+      <div class="composite-stage" aria-label="Atrium composite preview">
+        <img src="assets/final/Atrium.png" alt="Final Atrium simulator screenshot" style="width:100%; height:100%; object-fit:contain; display:block;" />
+        <div class="label-overlay">Final Atrium Room (Simulator Screenshot)</div>
+      </div>
+    </div>
+
+    <h2>2) What are the parts in this example</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Image Pieces</h3>
+        <ul>
+          <li>1 Floor base image 800x600</li>
+          <li>2 wall image(s)
+            <ul>
+                <li>North/South shared symmetric/rotated image</li>
+                <li>East/West shared symmetric/rotated image</li>
+            </ul>
+          </li>          
+          <li>1 corner image
+            <ul>
+                <li>Same image in all 4 corners, rotated</li>
+            </ul>
+          </li>
+          <li>2 Door object images
+            <ul>
+                <li>Closed door</li>
+                <li>Open door</li>
+            </ul>
+          </li>
+        </ul>
+        <div class="note">
+          Corner images are optional and used case-by-case.
+          Sometimes they are not desired at all, sometimes they hide an unpleasing seam,
+          and sometimes they are used as decorative room-corner detail.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Mix and matching</h3>
+        <p>
+            The goal of providing separate pieces is to allow  mix and match for different room layouts.
+            Mix and match can allow for different door placements and different wall/floor themes without having to create a whole new room image for each variant.
+
+            In addition to door layout flexibility mix and match can also provide the option to mix themes.
+            Such as having several variants of a floor image and mixing these with the same walls to create variation 
+            without having to create a whole new room image for each variant.
+        </p>
+      </div>
+    </div>
+
+    <h2>3) Dimension Rules</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Fixed Dimensions</h3>
+        <ul>
+          <li><b>Main room canvas</b>: 800 x 600</li>
+          <li><b>Long-wall span target</b>: 800 px</li>
+          <li><b>Short-wall span target</b>: 600 px</li>
+          <li><b>When there are 2 alternate images for a "thing" such as the open/closed door both images need to be the same overall dimension.</b></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Flexible Dimensions</h3>
+        <ul>
+          <li>Wall images may be visually "thicker" or "wider" to carry more texture detail.</li>
+          <li>Corner images may be as small as needed or extend beyond the seam line for stronger visual appeal.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>4) Wall Door Opening Transparency</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Walls With Door Openings</h3>
+        <p>
+          In the Atrium, all four walls use wall images that have a transparent opening in the center.
+          That opening is intentional. The door object image is placed into that transparent space. This allows for "the floor" to be visible behind the door when the door is open.
+        </p>
+        <ul>
+          <li>Wall image provides the wall surface and the opening.</li>
+          <li>Door image (Closed or Open) fills the opening.</li>
+          <li>Door frame/jamb artwork should hide raw cut edges so no harsh seam is visible.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Walls Without Door Openings</h3>
+        <p>
+          Solid wall versions with no transparent center cutout are also useful for rooms that do not have a door on that wall. 
+        </p>
+        <ul>
+          <li><b>Door wall option:</b> use wall-with-door image and door object image.</li>
+          <li><b>Solid wall option:</b> use wall-without-door image and no door opening.</li>
+          <li>Both options are valid and can be mixed room-by-room.</li>
+        </ul>
+      </div>
+    </div>
+
+
+    <h2>5) Atrium Reference Parts</h2>
+    <p>The following files are included in this package for an example reference</p>
+    <div class="parts-grid">
+      <div class="part-card">
+        <img src="assets/parts/DarkBrownWoodenFloor800x600.png" alt="Floor part" />
+        <div><b>Down (Floor)</b><br/>DarkBrownWoodenFloor800x600.png</div>
+      </div>
+      <div class="part-card">
+        <img src="assets/parts/LongBrickWall_MidDoor.png" alt="Long wall part" />
+        <div><b>North/South wall with door opening</b><br/>LongBrickWall_MidDoor.png</div>
+      </div>
+      <div class="part-card">
+        <img src="assets/parts/ShortBrickWall_MidDoor.png" alt="Short wall part" />
+        <div><b>East/West wall with door opening</b><br/>ShortBrickWall_MidDoor.png</div>
+      </div>
+      <div class="part-card">
+        <img src="assets/parts/LongBrickWall.png" alt="Long wall solid part" />
+        <div><b>North/South solid wall (no door opening)</b><br/>LongBrickWall.png</div>
+      </div>
+      <div class="part-card">
+        <img src="assets/parts/ShortBrickWall.png" alt="Short wall solid part" />
+        <div><b>East/West solid wall (no door opening)</b><br/>ShortBrickWall.png</div>
+      </div>
+      <div class="part-card">
+        <img src="assets/parts/StoneCorner.png" alt="Corner part" />
+        <div><b>Corner source</b><br/>StoneCorner.png</div>
+      </div>
+      <div class="part-card">
+        <img src="assets/parts/LightDoor.png" alt="Door closed part" />
+        <div><b>Door object (Closed)</b><br/>LightDoor.png</div>
+      </div>
+      <div class="part-card">
+        <img src="assets/parts/LightDoorOpen.png" alt="Door open part" />
+        <div><b>Door object (Open)</b><br/>LightDoorOpen.png</div>
+      </div>
+    </div>
+
+
+
+  </div>
+</body>
+</html>

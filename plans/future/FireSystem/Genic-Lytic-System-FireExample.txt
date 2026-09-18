@@ -1,0 +1,69 @@
+# Fire Property System – Implementation Plan
+
+## 1. Overview
+
+This system models fire behavior using a small set of clear, competing properties. 
+The design prioritizes gameplay clarity and intuitive interactions:
+
+- Objects can catch fire based on a threshold property.
+- Fire production only occurs while an object is actively burning.
+- Suppression actively works against production.
+- Fuel is consumed over time so fires eventually end.
+
+**Core Philosophy** 
+Pyrogenic and Pyrolytic are direct competitors (create vs destroy fire/heat). 
+Combustibility controls how easily something enters the burning state. 
+Burning state + Intensity acts as the on/off switch and strength multiplier.
+
+---
+
+## 2. Core Properties
+
+| Property | Range | Description |
+|---------------------|-----------|-------------|
+| **Combustibility** | 0–100 | How easily the object catches and sustains fire. Higher = lower ignition threshold. |
+| **Pyrogenic** | 0–100 | Fire/heat production potential. Only active while Burning. |
+| **Pyrolytic** | 0–100 | Fire suppression / extinguishing potential. Always available. |
+| **Fuel** | 0–100 | Remaining burnable material. Consumed while burning. |
+| **Burning** | Boolean | Is the object currently on fire? |
+| **Burning Intensity** | 0–100 | Strength of the current fire (multiplier for Pyrogenic output). |
+
+---
+
+## 3. Key Relationships
+
+- An object only produces heat when `Burning == true`.
+- Effective heat output = `Pyrogenic × (Burning Intensity / 100)`
+- Pyrolytic continuously works against Pyrogenic while burning.
+- When Fuel reaches 0 or Intensity drops too low → fire goes out.
+
+---
+
+## 4. Gameplay Rules & Formulas
+
+### 4.1 Ignition Check (Object-to-Object)
+
+```python
+def attempt_ignition(source, target):
+ if not source.burning or source.burning_intensity < 10:
+ return False
+ 
+ source_heat = source.pyrogenic * (source.burning_intensity / 100.0)
+ difficulty = 100 - target.combustibility
+ ignition_score = source_heat + (target.pyrogenic * 0.25)
+ 
+ return ignition_score >= difficulty
+```
+
+### 4.2 Burning Update (with Fuel Consumption)
+
+Called every game tick while the object is burning.
+
+```python
+def update_burning(obj, tick_rate=1.0):
+ if not obj.burning:
+ return
+ 
+ # Heat balance
+ production = obj.pyrogenic * (obj.burning_intensity / 100.0)
+ suppression = 

@@ -1,0 +1,39 @@
+look at classes like RoomExportDto and see why we are not just writing to the same dto the shared lib uses to read.
+
+rewrite the action lookup to be recursive
+
+open door challanges
+   1 if you want to show doors swung open then the closed image needs to be the same size
+   2 when open how to handle the space visually.  Sort of need wall images that expect doors to fill the space
+export service dto files...just file per class stuff
+
+fill out default messages
+debugger speed
+debugger append recording/fork recording
+
+tree auto scroll into view
+quick tools bar
+actions dialog more like procedures
+
+verb anywhere in command
+
+multi language files
+
+action result code registry to shift to reflection?
+
+determine if ProjectModelRuntimeSnapshotMapper is still used
+
+treat stack on a container as a request to put it in
+
+command preprocess current player verbs and other local scope things
+
+This looks potentially dead. fogure it out
+C:\work\HobbyStuff\storyboarding\StoryboardDesigner.App\ViewModels\GameStateTree
+
+contract issue notes
+    planet has no id
+
+.net10
+
+I think the var requiremnts are wrong RuntimeProcedureParticipantRequirementDto
+seems like that should be a rule level value not a participant level value
