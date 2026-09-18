@@ -44,7 +44,7 @@ Allowed edit scope (default):
 1. Storyboard.Shared.Contracts/**
 2. Storyboard.SchemaCodegen/**
 3. plans/active/*_PLAN.md
-4. plans/active/handovers/*_01_*_HANDOFF.md
+4. plans/active/handovers/<PLAN_FILE_STEM>/*_01_*_HANDOFF.md
 
 ### Stage 02: Designer Authoring UX
 
@@ -59,7 +59,7 @@ Allowed edit scope (default):
 1. StoryboardDesigner.App/**
 2. StoryboardDesigner.App.Tests/**
 3. StoryboardDesigner.App.SmokeTests/**
-4. plans/active/handovers/*_02_*_HANDOFF.md
+4. plans/active/handovers/<PLAN_FILE_STEM>/*_02_*_HANDOFF.md
 
 ### Stage 03: GameEngine Runtime Integration
 
@@ -78,7 +78,7 @@ Allowed edit scope (default):
 3. Storyboard.Shared/**
 4. Storyboard.GameHost/**
 5. Storyboard.GameClient.Tests/**
-6. plans/active/handovers/*_03_*_HANDOFF.md
+6. plans/active/handovers/<PLAN_FILE_STEM>/*_03_*_HANDOFF.md
 
 ### Stage 04: Host Interface And Web Portal Runtime Consumption
 
@@ -93,7 +93,7 @@ Allowed edit scope (default):
 2. Storyboard.Shared.Contracts/**
 3. Storyboard.WebPortal/**
 4. Storyboard.WebPortal.Tests/**
-5. plans/active/handovers/*_04_*_HANDOFF.md
+5. plans/active/handovers/<PLAN_FILE_STEM>/*_04_*_HANDOFF.md
 
 ### Stage 05: Simulator Host Parity
 
@@ -109,7 +109,7 @@ Allowed edit scope (default):
 1. Storyboard.Simulator/**
 2. Storyboard.Simulator.Tests/**
 3. Storyboard.Simulator.SmokeTests/**
-4. plans/active/handovers/*_05_*_HANDOFF.md
+4. plans/active/handovers/<PLAN_FILE_STEM>/*_05_*_HANDOFF.md
 
 ### Stage 06: Contract Retirement (Non-Backwards-Compatible)
 
@@ -131,7 +131,7 @@ Allowed edit scope (default):
 1. Storyboard.Shared.Contracts/**
 2. Storyboard.SchemaCodegen/**
 3. plans/active/*_PLAN.md
-4. plans/active/handovers/*_06_*_HANDOFF.md
+4. plans/active/handovers/<PLAN_FILE_STEM>/*_06_*_HANDOFF.md
 
 Validation expectation (default):
 1. Contract/interface guardrail suites are required.
@@ -150,7 +150,7 @@ Allowed edit scope (default):
 1. Test files needed for stabilization.
 2. Snapshot baselines and expected outputs.
 3. Plan and stage handoff documentation.
-4. plans/active/handovers/*_07_*_HANDOFF.md
+4. plans/active/handovers/<PLAN_FILE_STEM>/*_07_*_HANDOFF.md
 
 ## Stage Inclusion Matrix (Per Plan)
 

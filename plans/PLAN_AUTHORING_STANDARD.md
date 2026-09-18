@@ -32,7 +32,7 @@ For tiny single-file fixes, this full pattern is optional.
 ## Canonical File Locations
 
 1. Main plan: `plans/active/<WORKSTREAM_NAME>_PLAN.md`
-2. Stage handoffs: `plans/active/handovers/<WORKSTREAM_NAME>_0N_<STAGE>.md`
+2. Stage handoffs: `plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM_NAME>_0N_<STAGE>.md`
 3. Template source: `plans/templates/STAGED_HANDOFF_PLAN_TEMPLATE.md`
 4. Stage handoff template: `plans/templates/STAGE_HANDOFF_TEMPLATE.md`
 5. Standard stage catalog: `plans/STANDARD_STAGE_CATALOG.md`
@@ -89,6 +89,22 @@ Each stage handoff document must include all of:
 10. Stage boundary allowlist snapshot copied from the main plan
 11. Boundary compliance report (out-of-scope reads/edits and approvals)
 12. Compatibility mode declaration for contract stages (`Backward-compatible` for Stage 01, `Non-backward-compatible` for Stage 06)
+
+## Handoff Folder Structure (Required)
+
+Every new staged plan owns a dedicated handoff directory named exactly for the main plan file stem (the filename without `.md`).
+
+1. Main plan: `plans/active/<PLAN_FILE_STEM>.md`
+2. Its handoff folder: `plans/active/handovers/<PLAN_FILE_STEM>/`
+3. Its stage files: `plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM_NAME>_0N_<STAGE>_HANDOFF.md`
+
+Examples:
+
+1. `plans/active/PORTABLE_PATH_EXPANSION_AND_MULTI_ROOT_ASSETS_PLAN.md`
+2. `plans/active/handovers/PORTABLE_PATH_EXPANSION_AND_MULTI_ROOT_ASSETS_PLAN/`
+3. `plans/active/handovers/PORTABLE_PATH_EXPANSION_AND_MULTI_ROOT_ASSETS_PLAN/PORTABLE_PATH_EXPANSION_01_SHARED_PORTABILITY_HANDOFF.md`
+
+Do not add new handoff files directly under `plans/active/handovers/`. Existing flat handoff sets remain in place as historical/transition material unless an explicit migration is approved.
 
 ## Stage Boundary Policy (Required)
 
@@ -163,14 +179,14 @@ A workstream can be closed only when:
 When archiving a completed staged workstream, archive the full document set as one unit:
 
 1. Main plan file under `plans/active/`.
-2. All stage handoff files for that same workstream under `plans/active/handovers/`.
+2. Its dedicated stage-handoff directory under `plans/active/handovers/<PLAN_FILE_STEM>/`.
 
 Do not archive only the main plan or only a subset of handoffs. Partial archival is considered incomplete closeout.
 
 Required archive checklist for each completed workstream:
 
 1. Move main plan to `plans/archived/`.
-2. Move each related stage handoff to `plans/archived/handovers/` (or equivalent archived handoff location used by the repo).
+2. Move the complete handoff directory to `plans/archived/handovers/<PLAN_FILE_STEM>/` (or equivalent archived handoff location used by the repo).
 3. Preserve naming parity so stage sequence remains obvious after move.
 4. Update `plans/README.md` with one archive entry that references the workstream as a single unit.
 
@@ -179,7 +195,7 @@ Required archive checklist for each completed workstream:
 1. Copy `plans/templates/STAGED_HANDOFF_PLAN_TEMPLATE.md` to `plans/active/<NEW_PLAN>.md`.
 2. Open `plans/STANDARD_STAGE_CATALOG.md` and select stage inclusion (`Required`, `Optional`, `Skipped`) for this workstream.
 3. Lock Stage order before coding begins (preserve standard order for included stages, including Stage 06 when used).
-4. Create handoff files for all included stages immediately using `plans/templates/STAGE_HANDOFF_TEMPLATE.md` as placeholders.
+4. Create `plans/active/handovers/<PLAN_FILE_STEM>/`, then create handoff files for all included stages in that directory immediately using `plans/templates/STAGE_HANDOFF_TEMPLATE.md` as placeholders.
 5. Copy stage boundary allowlists from the main plan into each stage handoff placeholder.
 6. Complete one stage at a time and replace placeholder sections with executed outcomes.
 7. Start next stage only from prior stage handoff outputs.

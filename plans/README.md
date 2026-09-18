@@ -30,7 +30,7 @@ New non-trivial plans should follow the staged handoff standard:
 Mandatory kickoff cadence for staged plans:
 
 1. Lock Stage 1..N order in the main plan.
-2. Create all Stage 1..N handoff docs immediately as placeholders in `plans/active/handovers/`.
+2. Create `plans/active/handovers/<PLAN_FILE_STEM>/`, then create all Stage 1..N handoff docs immediately as placeholders in that plan-owned folder.
 3. Include an opening prompt in each stage handoff placeholder.
 4. Begin implementation only after the full placeholder handoff set exists.
 

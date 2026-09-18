@@ -66,7 +66,7 @@ Each stage must end with a formal handoff markdown document before downstream wo
 
 Plan initialization requirement:
 1. Create all Stage 1..N handoff files as placeholders immediately when this plan is created.
-2. Do not begin implementation until every listed stage has a placeholder handoff file in `plans/active/handovers/`.
+2. Do not begin implementation until `plans/active/handovers/<PLAN_FILE_STEM>/` exists and every listed stage has a placeholder handoff file in that plan-owned directory.
 
 ## Stage Inclusion Matrix
 
@@ -108,13 +108,13 @@ Current progress:
 - Workstream status: Not started.
 
 Initial placeholder handoff file set (create up front for included stages):
-1. plans/active/handovers/<WORKSTREAM>_01_<STAGE>_HANDOFF.md
-2. plans/active/handovers/<WORKSTREAM>_02_<STAGE>_HANDOFF.md
-3. plans/active/handovers/<WORKSTREAM>_03_<STAGE>_HANDOFF.md
-4. plans/active/handovers/<WORKSTREAM>_04_<STAGE>_HANDOFF.md
-5. plans/active/handovers/<WORKSTREAM>_05_<STAGE>_HANDOFF.md
-6. plans/active/handovers/<WORKSTREAM>_06_<STAGE>_HANDOFF.md
-7. plans/active/handovers/<WORKSTREAM>_07_<STAGE>_HANDOFF.md
+1. plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM>_01_<STAGE>_HANDOFF.md
+2. plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM>_02_<STAGE>_HANDOFF.md
+3. plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM>_03_<STAGE>_HANDOFF.md
+4. plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM>_04_<STAGE>_HANDOFF.md
+5. plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM>_05_<STAGE>_HANDOFF.md
+6. plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM>_06_<STAGE>_HANDOFF.md
+7. plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM>_07_<STAGE>_HANDOFF.md
 
 ### Stage 1: <Stage 1 Name>
 
@@ -130,7 +130,7 @@ Codebase context:
 6. Allowed edit scope: <project/folder allowlist>
 
 Primary output handoff document:
-- plans/active/handovers/<WORKSTREAM>_01_<STAGE>_HANDOFF.md
+- plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM>_01_<STAGE>_HANDOFF.md
 
 Required handoff contents:
 - Scope completed
@@ -161,7 +161,7 @@ Codebase context:
 6. Allowed edit scope: <project/folder allowlist>
 
 Primary output handoff document:
-- plans/active/handovers/<WORKSTREAM>_02_<STAGE>_HANDOFF.md
+- plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM>_02_<STAGE>_HANDOFF.md
 
 Required handoff contents:
 - Scope completed
@@ -192,7 +192,7 @@ Codebase context:
 6. Allowed edit scope: <project/folder allowlist>
 
 Primary output handoff document:
-- plans/active/handovers/<WORKSTREAM>_03_<STAGE>_HANDOFF.md
+- plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM>_03_<STAGE>_HANDOFF.md
 
 Required handoff contents:
 - Scope completed
@@ -223,7 +223,7 @@ Codebase context:
 6. Allowed edit scope: <project/folder allowlist>
 
 Primary output handoff document:
-- plans/active/handovers/<WORKSTREAM>_04_<STAGE>_HANDOFF.md
+- plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM>_04_<STAGE>_HANDOFF.md
 
 Required handoff contents:
 - Scope completed
@@ -254,7 +254,7 @@ Codebase context:
 6. Allowed edit scope: <project/folder allowlist>
 
 Primary output handoff document:
-- plans/active/handovers/<WORKSTREAM>_05_<STAGE>_HANDOFF.md
+- plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM>_05_<STAGE>_HANDOFF.md
 
 Required handoff contents:
 - Scope completed
@@ -285,7 +285,7 @@ Codebase context:
 6. Allowed edit scope: <project/folder allowlist>
 
 Primary output handoff document:
-- plans/active/handovers/<WORKSTREAM>_06_<STAGE>_HANDOFF.md
+- plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM>_06_<STAGE>_HANDOFF.md
 
 Required handoff contents:
 - Scope completed
@@ -316,7 +316,7 @@ Codebase context:
 6. Allowed edit scope: <project/folder allowlist>
 
 Primary output handoff document:
-- plans/active/handovers/<WORKSTREAM>_07_<STAGE>_HANDOFF.md
+- plans/active/handovers/<PLAN_FILE_STEM>/<WORKSTREAM>_07_<STAGE>_HANDOFF.md
 
 Required handoff contents:
 - Scope completed
