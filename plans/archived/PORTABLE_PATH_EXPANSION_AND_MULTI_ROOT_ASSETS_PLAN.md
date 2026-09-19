@@ -1,8 +1,18 @@
 # Portable Path Expansion and Multi-Root Asset Sources Handoff Plan
 
 Last updated: 2026-09-18  
-Status: Draft (handoff-ready; implementation not authorized)  
+Status: Complete — canonical multi-root format adopted; `ASSETROOT:/` retired
 Purpose: replace inconsistent path portability behavior with one diagnosable `%ENV_VAR%` path-expression standard, enable multiple named asset roots, and create a locked cross-repository delivery cadence.
+
+## Local Execution Status
+
+Stages 01-07 are complete for the approved scope. Controlled authored project
+data was migrated, WebPortal consumer validation passed, and legacy
+`ASSETROOT:/` support was retired. Runtime consumers continue to use generated
+relative assets.
+
+The final handoffs record the implementation, migration counts, validation
+results, documentation updates, and the unsupported legacy-format decision.
 
 ## Problem Statement
 
@@ -233,7 +243,7 @@ Codebase context:
 
 Primary output: `plans/active/handovers/PORTABLE_PATH_EXPANSION_AND_MULTI_ROOT_ASSETS_PLAN/PORTABLE_PATH_EXPANSION_01_SHARED_PORTABILITY_HANDOFF.md`.
 
-### Stage 02: Designer Multi-Root Authoring and Export
+### Stage 02: Designer Multi-Root Authoring and Export — Complete
 
 Goal: resolve standard expressions, write the named root token form, preserve legacy reads, and ensure preview/validation/image/sound staging all share that behavior.
 

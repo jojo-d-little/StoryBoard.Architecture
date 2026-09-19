@@ -1,9 +1,9 @@
 # Portable Path Expansion — Stage 04 Simulator Verification Handoff
 
-Status: Placeholder — not started  
+Status: Complete — verification-only; no Simulator implementation change required  
 Stage: 04 of 07  
 Date: 2026-09-18  
-Owner Session: Unassigned
+Owner Session: StoryBoard.GameEngine workspace
 
 ## Opening Prompt (Use To Start This Stage)
 
@@ -16,11 +16,13 @@ Allowed edit: `StoryBoard.GameEngine/Storyboard.Simulator*/**` only for a proven
 
 ## Scope Completed
 
-Not started.
+Verified the Stage 03 Host/runtime asset flow with images originating from two distinct Designer asset roots. Both images were served through the Host as runtime-relative asset locators and consumed successfully by Simulator.
+
+Simulator did not receive authoring source-root expressions or physical source-root paths. No Simulator code change was required.
 
 ## Files Changed
 
-None.
+Only this handoff was changed. No files under `Storyboard.Simulator`, `Storyboard.Simulator.Tests`, or `Storyboard.Simulator.SmokeTests` were modified.
 
 ## Contract/Interface Impact
 
@@ -32,7 +34,7 @@ None.
 
 ## Test Results
 
-Pending two-source-root-to-host-to-simulator verification.
+User-confirmed two-source-root-to-Host-to-Simulator verification passed. Simulator tests also passed: 92 passed, 0 failed.
 
 ## Behavioral Notes
 
@@ -52,4 +54,4 @@ Exceptions: None.
 
 1. Provide verification/no-change evidence to WebPortal stage.
 2. Preserve runtime-relative asset URL invariants.
-3. Record whether Simulator had no required implementation change.
+3. Carry forward that Simulator had no required implementation change.

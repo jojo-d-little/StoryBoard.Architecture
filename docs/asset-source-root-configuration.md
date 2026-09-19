@@ -1,21 +1,24 @@
 # Asset Source Root Configuration
 
-This repository supports a logical asset source root via environment variable:
+The Designer resolves authored source assets through environment variables:
 
 - Name: STORYBOARD_ASSET_SOURCE_ROOT
-- Purpose: Resolves authored asset paths that use ASSETROOT:/... tokens.
+- Purpose: Primary authoring asset root.
+- Additional roots: `STORYBOARD_ASSET_SOURCE_ROOT_<NAME>`.
 
-## Path Token Format
+## Canonical Path Format
 
-Use portable authored references like:
+Persist authored references using percent-delimited environment-variable tokens:
 
-- ASSETROOT:/FormalImages/Victorian/HotelRoom/VicHotel_DoorClosed.png
-- ASSETROOT:/PlaceHolderSounds/CABINET DOOR OPEN.wav
+- `%STORYBOARD_ASSET_SOURCE_ROOT%/FormalImages/Victorian/HotelRoom/VicHotel_DoorClosed.png`
+- `%STORYBOARD_ASSET_SOURCE_ROOT%/PlaceHolderSounds/CABINET DOOR OPEN.wav`
+- `%STORYBOARD_ASSET_SOURCE_ROOT_ASSETLIB%/Sounds/example.wav`
 
-At runtime/design time, these resolve to:
+At design time, these resolve to the configured physical roots. Runtime exports
+continue to use relative `assets/...` paths and do not depend on authoring roots.
 
-- <STORYBOARD_ASSET_SOURCE_ROOT>/FormalImages/Victorian/HotelRoom/VicHotel_DoorClosed.png
-- <STORYBOARD_ASSET_SOURCE_ROOT>/PlaceHolderSounds/CABINET DOOR OPEN.wav
+Root names after `STORYBOARD_ASSET_SOURCE_ROOT_` must begin with an uppercase
+letter and contain only uppercase letters, digits, and underscores.
 
 ## Configure On Windows
 
@@ -31,13 +34,15 @@ PowerShell (current session only):
 $env:STORYBOARD_ASSET_SOURCE_ROOT = "C:\work\HobbyStuff\storyboarding"
 ```
 
-After changing with `setx`, restart shells and apps that should read the new value.
+After changing with `setx`, restart Designer. Designer refreshes missing user
+environment variables from the current user's environment settings at startup,
+so a Windows reboot or Explorer restart is not required.
 
 ## Migration Guidance
 
-- Existing absolute paths continue to work for backward compatibility.
-- Prefer ASSETROOT:/... for authored data that should stay machine-portable.
-- Designer authoring now auto-normalizes persisted paths to ASSETROOT:/... when the selected or entered absolute path resolves under STORYBOARD_ASSET_SOURCE_ROOT.
+- `ASSETROOT:/...` is retired and is not supported.
+- Migrate older projects before opening, editing, or publishing them in Designer.
+- Existing absolute paths remain readable, but new in-root authored paths are persisted using the canonical `%STORYBOARD_ASSET_SOURCE_ROOT...%/...` form.
 - This normalization applies to image paths, sound asset refs, and game preview image paths saved from the authoring dialogs.
 - Published runtime/export assets remain generated output.
 - Publish writes `assets/assets-manifest.json` with exported path, source paths, SHA-256, and file size metadata.
