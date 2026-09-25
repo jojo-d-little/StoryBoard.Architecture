@@ -1,6 +1,6 @@
 # Simulator Retirement Readiness Feature Execution Roadmap
 
-Last updated: 2026-09-20
+Last updated: 2026-09-24
 Status: Draft / execution overlay
 Owner: Cross-repository architecture workstream
 
@@ -89,8 +89,8 @@ Execution guidance:
 | ID | Feature | Priority | Status | Primary dependency | Areas revisited |
 | --- | --- | --- | --- | --- | --- |
 | F00 | Decisions, baseline, and traceability | P0 | Not started | None | Architecture, Contracts, Designer, Engine, Portal, Simulator audit |
-| F01 | Ad hoc development launch and automatic bootstrap | P0 | Not started | F00 | Contracts, Designer, Engine/Host, Portal, Simulator audit |
-| F02 | First-class diagnostics and trace workflow | P0 | Not started | F00; F01 for full E2E | Contracts if needed, Engine/Host, Portal, Simulator audit |
+| F01 | Ad hoc development launch and automatic bootstrap | P0 | Implementation complete; closure pending | F00 | Contracts, Designer, Engine/Host, Portal, Simulator audit |
+| F02 | First-class diagnostics and trace workflow | P0 | Complete; follow-up refinements recorded | F00; F01 for full E2E | Contracts if needed, Engine/Host, Portal, Simulator audit |
 | F03 | Presentation and audio isolation controls | P1 | Not started | F00; F01 for full E2E | Engine semantics review, Portal, Simulator audit |
 | F04 | Authoritative recording and playback | P0 | Not started | F01 | Contracts, Engine/Host, Portal, Designer startup options, Simulator audit |
 | F05 | Save/load state and latest-export reinitialize | P0/P1 | Not started | F01 | Designer, Engine/Host, Portal, Simulator audit |
@@ -119,9 +119,9 @@ Area legend: 🟦 **Host / Engine** · 🟨 **Designer** · 🟪 **WebPortal** �
 | 🟨 **Designer** | F01.2 | Complete the known Designer foundation: add the distinct GameHost/WebPortal action, generate the temporary one-entry registration JSON, launch/manage the host and browser, provide failure/retry/cleanup UX, and preserve the WPF Simulator action unchanged. |
 | 🟪 **WebPortal** | F01.3 | Complete the known Portal foundation: automatically attach to the intended development game/session using the existing host flow, with no browser filesystem access or assumed new contract. |
 | ⬜ **Integration** | F01.4 | Run the first no-code vertical integration test across the completed Host, Designer, and Portal foundations and assign each discovered gap to one owning area. |
-| 🟦 **Host / Engine** | F01.5 | If F01.4 assigns Host/Engine gaps, complete them in one owner-focused remediation pass; otherwise mark this pass not needed. |
-| 🟨 **Designer** | F01.6 | If F01.4 assigns Designer gaps, complete them in one owner-focused remediation pass; otherwise mark this pass not needed. |
-| 🟪 **WebPortal** | F01.7 | If F01.4 assigns Portal gaps, complete them in one owner-focused remediation pass; otherwise mark this pass not needed. |
+| 🟦 **Host / Engine** | F01.5 | Complete unresolved Host/Engine gaps after F01.4, or record that earlier inline remediation absorbed the pass. |
+| 🟨 **Designer** | F01.6 | Complete unresolved Designer gaps after F01.4, or record that earlier inline remediation absorbed the pass. |
+| 🟪 **WebPortal** | F01.7 | Complete unresolved Portal gaps after F01.4, or record that earlier inline remediation absorbed the pass. |
 | ⬜ **Integration** | F01.8 | Run final vertical fresh-project launch regression, including paths with spaces, invalid export, relaunch, and production-negative cases, while separately proving the legacy Simulator action still works. |
 | 🟧 **Simulator Audit** | F01.9 | Compare startup/reset/duplicate-launch behavior and disposition the corresponding tests and fixtures. |
 
@@ -253,7 +253,7 @@ Only post-Go F08 may remove the existing Simulator launch action. F01 must inclu
 
 ### F01 Ordered Area-Pass Execution Matrix
 
-The first wave is deliberately area-first: complete the known Host/Engine foundation, then Designer, then WebPortal, without bouncing back for anticipated tweaks. `F01.4` is the first no-code integration checkpoint. Only gaps actually found there open the owner-focused optional remediation passes F01.5–F01.7; `F01.8` is the final no-code integration gate.
+The first wave is deliberately area-first: complete the known Host/Engine foundation, then Designer, then WebPortal, without bouncing back for anticipated tweaks. Each owner pass may iterate on defects discovered during its own implementation and focused validation. `F01.4` is the integration checkpoint; only unresolved owner-specific gaps after that checkpoint open separate remediation passes F01.5–F01.7. `F01.8` is the final acceptance gate.
 
 | Order | Pass | Session owner / ledger | Authorized product area | Prerequisite | Required handoff output | Next pass |
 | --- | --- | --- | --- | --- | --- |
@@ -261,9 +261,9 @@ The first wave is deliberately area-first: complete the known Host/Engine founda
 | 2 | F01.2 | 🟨 **Designer** / 02 | 🟨 `StoryBoard.Designer` app/test/smoke projects | F01.1 host semantics | Complete known Designer launch/process/browser/failure/retry/cleanup behavior and separately prove the preserved legacy Simulator action | F01.3 |
 | 3 | F01.3 | 🟪 **WebPortal** / 04 | 🟪 `StoryBoard.WebPortal` app/test projects | F01.1 host behavior; F01.2 launch result | Complete automatic active-game/session attachment using existing host flow, or document the first genuine interface gap | F01.4 |
 | 4 | F01.4 | ⬜ **Integration** / 07 | ⬜ No product edits; all three areas are test subjects | F01.1–F01.3 | Fresh-project vertical test report with each gap assigned to one owner: Host/Engine, Designer, Portal, or audit | Needed F01.5–F01.7, then F01.8 |
-| 5a | F01.5 | 🟦 **Host / Engine** / 03 | 🟦 `StoryBoard.GameEngine` host/runtime/test projects | F01.4-assigned Host/Engine gaps only | Complete all assigned Host/Engine remediation in one focused pass, or mark not needed | F01.8 |
-| 5b | F01.6 | 🟨 **Designer** / 02 | 🟨 `StoryBoard.Designer` app/test/smoke projects | F01.4-assigned Designer gaps only | Complete all assigned Designer remediation in one focused pass, or mark not needed | F01.8 |
-| 5c | F01.7 | 🟪 **WebPortal** / 04 | 🟪 `StoryBoard.WebPortal` app/test projects | F01.4-assigned Portal gaps only | Complete all assigned Portal remediation in one focused pass, or mark not needed | F01.8 |
+| 5a | F01.5 | 🟦 **Host / Engine** / 03 | 🟦 `StoryBoard.GameEngine` host/runtime/test projects | Unresolved F01.4 Host/Engine gaps only | Complete assigned remediation, or record that earlier inline remediation absorbed the pass | F01.8 |
+| 5b | F01.6 | 🟨 **Designer** / 02 | 🟨 `StoryBoard.Designer` app/test/smoke projects | Unresolved F01.4 Designer gaps only | Complete assigned remediation, or record that earlier inline remediation absorbed the pass | F01.8 |
+| 5c | F01.7 | 🟪 **WebPortal** / 04 | 🟪 `StoryBoard.WebPortal` app/test projects | Unresolved F01.4 Portal gaps only | Complete assigned remediation, or record that earlier inline remediation absorbed the pass | F01.8 |
 | 6 | F01.8 | ⬜ **Integration** / 07 | ⬜ No product edits except approved narrow test stabilization | F01.1–F01.7 required remediations | Final vertical acceptance results, with no hidden legacy-launch regression | F01.9 |
 | 7 | F01.9 | 🟧 **Simulator Audit** / 05 | 🟧 Simulator audit/test/fixture areas only | F01.8 | Startup/reset/duplicate-launch parity disposition and fixture/test ownership record | Feature closure review |
 
